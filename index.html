@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App 05: Text Summarizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-icon">✂️</div>
+      <div>
+        <h1>Text Summarizer</h1>
+        <p class="subtitle">Extract key sentences from paragraphs and articles using sentence-importance scoring.</p>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="card">
+        <label for="textInput" class="form-label">Original Text to Summarize:</label>
+        <textarea id="textInput" class="form-textarea" rows="8" placeholder="Paste an article or multi-sentence paragraph here..."></textarea>
+
+        <div class="options-row">
+          <label for="summaryLength" class="form-label mb-0">Desired Summary Length:</label>
+          <select id="summaryLength" class="form-select">
+            <option value="2">Top 2 Sentences</option>
+            <option value="3" selected>Top 3 Sentences</option>
+            <option value="0.3">~30% of Original Text</option>
+            <option value="0.5">~50% of Original Text</option>
+          </select>
+        </div>
+
+        <div class="button-row">
+          <button id="btnSummarize" class="btn btn-primary">Generate Summary</button>
+          <button id="btnSample" class="btn btn-secondary">Load Sample Article</button>
+          <button id="btnClear" class="btn btn-outline-danger">Clear</button>
+        </div>
+
+        <div id="toast" class="toast"></div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none;">
+          <!-- Metrics Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-val" id="origWordCount">0</span>
+              <span class="metric-lbl">Original Word Count</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-val" id="summaryWordCount">0</span>
+              <span class="metric-lbl">Summary Word Count</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-val" id="reductionPercent">0%</span>
+              <span class="metric-lbl">Size Reduction</span>
+            </div>
+          </div>
+
+          <!-- Summary Output Display -->
+          <div class="output-box">
+            <div class="output-header">
+              <h3 class="output-title">Extracted Summary</h3>
+              <button id="btnCopy" class="btn btn-sm btn-primary">Copy Summary</button>
+            </div>
+            <div id="summaryText" class="summary-content"></div>
+          </div>
+
+          <!-- Original Text Display -->
+          <div class="original-box mt-3">
+            <h4 class="sub-title">Original Text Reference:</h4>
+            <div id="origTextDisplay" class="orig-content"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>App 05: Text Summarizer &bull; Part of Text and Speech Analysis Suite</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
